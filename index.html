@@ -141,7 +141,9 @@ window.Quarto = {
   <li><a href="#rationale" id="toc-rationale" class="nav-link" data-scroll-target="#rationale"><span class="header-section-number">12.1.1</span> Rationale</a></li>
   <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy"><span class="header-section-number">12.1.2</span> Strategy</a></li>
   </ul></li>
-  <li><a href="#xgboost-calibration-plot-before-recalibration" id="toc-xgboost-calibration-plot-before-recalibration" class="nav-link" data-scroll-target="#xgboost-calibration-plot-before-recalibration"><span class="header-section-number">12.2</span> XGBoost calibration plot before recalibration</a></li>
+  <li><a href="#penalized-coxph-model-tuning" id="toc-penalized-coxph-model-tuning" class="nav-link" data-scroll-target="#penalized-coxph-model-tuning"><span class="header-section-number">12.2</span> Penalized CoxPH model tuning</a></li>
+  <li><a href="#rsf-tuning-strategy" id="toc-rsf-tuning-strategy" class="nav-link" data-scroll-target="#rsf-tuning-strategy"><span class="header-section-number">12.3</span> RSF tuning strategy</a></li>
+  <li><a href="#xgboost-calibration-plot-before-recalibration" id="toc-xgboost-calibration-plot-before-recalibration" class="nav-link" data-scroll-target="#xgboost-calibration-plot-before-recalibration"><span class="header-section-number">12.4</span> XGBoost calibration plot before recalibration</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1426,8 +1428,57 @@ Figure&nbsp;7: K-M Plot by Predicted Risk
 nrounds = 909</code></pre>
 </section>
 </section>
-<section id="xgboost-calibration-plot-before-recalibration" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="xgboost-calibration-plot-before-recalibration"><span class="header-section-number">12.2</span> XGBoost calibration plot before recalibration</h2>
+<section id="penalized-coxph-model-tuning" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="penalized-coxph-model-tuning"><span class="header-section-number">12.2</span> Penalized CoxPH model tuning</h2>
+<p><strong>Stage 1</strong>:</p>
+<ul>
+<li>metric = brier_survival</li>
+<li>eval_time = 730</li>
+<li>small grid</li>
+</ul>
+<pre><code>grid_glmnet_quick &lt;- crossing(
+  mixture = c(0, 0.1, 0.25, 0.5, 0.75, 1),
+  penalty = 10^seq(-5, 0.5, length.out = 20)
+)</code></pre>
+<p><strong>Stage 2</strong></p>
+<ul>
+<li>metric = brier_survival_integrated</li>
+<li>eval_time = c(90, 180, 365, 545, 730)</li>
+<li>refined grid based on the results of Stage 1 tuning</li>
+</ul>
+<pre><code>grid_glmnet_refined &lt;- crossing(
+  mixture = c(0, 0.10, 0.15, 0.25, 0.35, 0.50, 0.75, 1.00),
+  penalty = 10^seq(-5, -2, length.out = 30)
+)</code></pre>
+<p><strong>Final model</strong></p>
+<p>Best parameters:</p>
+<ul>
+<li>penalty: 0.004893901</li>
+<li>mixture: 0.1</li>
+</ul>
+<p>Fit the final model based on the best parameters.</p>
+</section>
+<section id="rsf-tuning-strategy" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="rsf-tuning-strategy"><span class="header-section-number">12.3</span> RSF tuning strategy</h2>
+<ul>
+<li>Full-set tuning</li>
+<li>Use mean_IBS as the main metrics for model selection</li>
+</ul>
+<p><strong>Tuning grid</strong>:</p>
+<pre><code>grid &lt;- expand_grid(
+  mtry = c(7, 10, 12, 15),
+  nodesize = c(10, 15, 20, 25),
+  nsplit = c(1, 5, 10)
+)</code></pre>
+<p><strong>Best params:</strong></p>
+<ul>
+<li>mtry = 12</li>
+<li>nodesize = 25</li>
+<li>nsplit = 10</li>
+</ul>
+</section>
+<section id="xgboost-calibration-plot-before-recalibration" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="xgboost-calibration-plot-before-recalibration"><span class="header-section-number">12.4</span> XGBoost calibration plot before recalibration</h2>
 <div id="fig-id" class="quarto-float quarto-figure quarto-figure-center anchored" alt="alt">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

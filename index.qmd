@@ -17,7 +17,9 @@ format:
     css: style.css
 execute:
   echo: false
-output-dir: docs
+project:
+  type: website
+  output-dir: docs
 ---
 
 # Please leave your feedback
@@ -481,6 +483,64 @@ final_params <- list(
 )
 nrounds = 909
 ```
+
+## Penalized CoxPH model tuning 
+
+**Stage 1**:
+
+- metric = brier_survival
+- eval_time = 730
+- small grid 
+
+```{}
+grid_glmnet_quick <- crossing(
+  mixture = c(0, 0.1, 0.25, 0.5, 0.75, 1),
+  penalty = 10^seq(-5, 0.5, length.out = 20)
+)
+```
+
+**Stage 2**
+
+- metric = brier_survival_integrated
+- eval_time = c(90, 180, 365, 545, 730)
+- refined grid based on the results of Stage 1 tuning
+
+```{}
+grid_glmnet_refined <- crossing(
+  mixture = c(0, 0.10, 0.15, 0.25, 0.35, 0.50, 0.75, 1.00),
+  penalty = 10^seq(-5, -2, length.out = 30)
+)
+```
+
+**Final model**
+
+Best parameters: 
+
+- penalty: 0.004893901
+- mixture: 0.1
+  
+Fit the final model based on the best parameters.
+
+## RSF tuning strategy
+
+- Full-set tuning
+- Use mean_IBS as the main metrics for model selection
+
+**Tuning grid**:
+
+```{}
+grid <- expand_grid(
+  mtry = c(7, 10, 12, 15),
+  nodesize = c(10, 15, 20, 25),
+  nsplit = c(1, 5, 10)
+)
+```
+
+**Best params:**
+
+- mtry = 12
+- nodesize = 25
+- nsplit = 10
 
 ## XGBoost calibration plot before recalibration
 
