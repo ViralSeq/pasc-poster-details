@@ -176,6 +176,9 @@ window.Quarto = {
 <p>Thank you for visiting our poster.</p>
 <p>We welcome feedback on the study design, model interpretation, and potential clinical applications.</p>
 <p><a href="https://forms.gle/ZqsvhNpAvZHgNRwS6" class="big-link">Leave anonymous feedback</a></p>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 <section id="authors" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Authors</h1>
@@ -187,10 +190,16 @@ window.Quarto = {
 <p><sup>5</sup>The Ohio State University College of Nursing, Columbus, OH;</p>
 <p><sup>6</sup>University of Miami, Miami, FL;</p>
 <p><sup>7</sup>Axle Informatics, Rockville, MD</p>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 <section id="study-overview" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Study overview</h1>
 <p>Long COVID (post‑acute sequelae of SARS‑CoV‑2 infection; <strong>PASC</strong>) is heterogeneous, frequently disabling, and associated with persistent multisystem disease in some patients. While preexisting comorbidities increase acute COVID‑19 severity, their relative, clinically usable contributions to <strong>longer-term mortality</strong> risk among patients who develop Long COVID remain incompletely quantified in large, contemporary electronic health record (EHR) cohorts. We will develop and validate an interpretable machine learning model using <strong>pre-existing comorbidities</strong> for <strong>2-year all-cause mortality</strong> in a Long COVID cohort, helping identify patients who may benefit from proactive follow-up, rehabilitation planning, and goals-of-care discussions.</p>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 <section id="introduction" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Introduction</h1>
@@ -212,6 +221,9 @@ window.Quarto = {
 <section id="clinical-importance" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="clinical-importance"><span class="header-section-number">4.3</span> Clinical importance</h2>
 <p>Long COVID is not only a heterogeneous symptom syndrome but also a measurable burden of morbidity and disability, with sustained decrements in health-related quality of life and work ability in population-based cohorts. This burden, together with evidence of persistent multisystem sequelae and non-trivial mortality risk in higher-severity groups, supports a pragmatic approach to early risk stratification at diagnosis to target follow-up, rehabilitation, and specialist evaluation to those most likely to experience prolonged impairment.</p>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 </section>
 <section id="objectives" class="level1" data-number="5">
@@ -221,6 +233,9 @@ window.Quarto = {
 <li>Develop and internally validate prediction models using pre‑existing comorbidities (and selected baseline characteristics) to predict 2‑year mortality after PASC index, and translate the best‑performing model into an interpretable model.&nbsp;</li>
 <li>Assess discrimination, calibration, and clinical utility of the final model.</li>
 </ul>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 <section id="population" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Population</h1>
@@ -260,6 +275,9 @@ Note
 <h2 data-number="6.3" class="anchored" data-anchor-id="cohort-construction-long-covidpasc"><span class="header-section-number">6.3</span> Cohort Construction (Long COVID/PASC)</h2>
 <p>We constructed the Long COVID cohort using pre-specified, EHR-based phenotypes available in N3C. The primary phenotype were (i) an ICD‑10‑CM U09.9 diagnosis and/or (ii) an N3C/RECOVER computable phenotype for Long COVID. The PASC index date was defined as the first qualifying event meeting the chosen phenotype definition and will serve as time zero for all post‑PASC outcomes.</p>
 <p>Pre‑existing comorbidities were ascertained using diagnoses recorded before the index infection date (a prespecified lookback window, with most conditions having lifetime lookback windows). Several pre-existing exposures (including tobacco usage, previous COVID diagnosis, usage of corticosteroids and/or remdesivir) were also be recorded. We defined observability using EHR data-density/utilization rules (e.g., evidence of encounters in the baseline period and post-index follow-up) and censored follow-up at the last known observable date to mitigate differential follow-up bias.</p>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 </section>
 <section id="key-variables" class="level1" data-number="7">
@@ -575,6 +593,9 @@ Note
 </tr>
 </tbody>
 </table>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 </section>
 <section id="data-analysis-methods" class="level1" data-number="8">
@@ -611,6 +632,9 @@ Note
 <h2 data-number="8.5" class="anchored" data-anchor-id="calibration-and-recalibration"><span class="header-section-number">8.5</span> Calibration and recalibration</h2>
 <p>Because the XGBoost Cox model estimates relative risk rather than absolute survival probability, we performed Cox recalibration to convert the model output into time-specific absolute event risk. The final XGBoost model was first used to generate an individual-level log-risk score, denoted as <span class="math inline">\(lp_{\mathrm{xgb}}\)</span>. We then fitted a Cox proportional hazards recalibration model in the training set using <span class="math inline">\(lp_{\mathrm{xgb}}\)</span> as the sole predictor: <span class="math inline">\(h_i(t) = h_0(t)\exp(\beta_{\mathrm{cal}} lp_{\mathrm{xgb},i})\)</span>, where <span class="math inline">\(\beta_{\mathrm{cal}}\)</span> is the recalibration coefficient estimated from the training data and <span class="math inline">\(h_0(t)\)</span> is the baseline hazard. The corresponding baseline cumulative hazard, <span class="math inline">\(H_0(t)\)</span>, was estimated from this recalibration Cox model. For each individual, the recalibrated linear predictor was calculated as <span class="math inline">\(\eta_i=\beta_{\mathrm{cal}}lp_{\mathrm{xgb},i}\)</span>, and the time-specific survival probability was estimated as <span class="math inline">\(S_i(t) = \exp[-H_0(t)\exp(\eta_i)]\)</span>. Absolute event risk at time <span class="math inline">\(t\)</span> was then calculated as <span class="math inline">\(1\ -\ S_i(t)\)</span>. Calibration was evaluated in the held-out test set by grouping individuals according to predicted event risk and comparing mean predicted risk with Kaplan–Meier observed event risk within each group at prespecified time points.</p>
 <p>All final model comparisons were based on the held-out testing set to avoid optimistic performance estimates. The overall analytic strategy was designed to compare conventional and machine learning survival models, identify whether flexible nonlinear models improved predictive performance, and interpret the best-performing model in a clinically and biologically meaningful manner.</p>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 </section>
 <section id="results" class="level1" data-number="9">
@@ -1016,6 +1040,9 @@ Figure&nbsp;2: Final recalibration
 <section id="recalibration-interpretation." class="level3" data-number="9.8.1">
 <h3 data-number="9.8.1" class="anchored" data-anchor-id="recalibration-interpretation."><span class="header-section-number">9.8.1</span> Recalibration interpretation.</h3>
 <p>In the recalibration Cox model, the estimated coefficient for the XGBoost log-risk score was 1.083, indicating that the original XGBoost risk score was mildly compressed on the log-hazard scale.&nbsp;The recalibrated linear predictor was therefore calculated by multiplying the XGBoost log-risk score by this coefficient before combining it with the estimated baseline cumulative hazard to derive absolute survival probabilities. After recalibration, time-specific calibration plots showed good agreement between mean predicted event risk and Kaplan–Meier observed event risk across risk groups at 90, 180, 365, and 730 days. Finer stratification of predicted-risk groups suggested some overestimation of risk in the extreme high-risk tail, particularly at later follow-up times, but overall calibration was substantially improved after recalibration. These results indicate that the final calibrated XGBoost Cox model can be used not only for risk ranking but also for estimating time-specific absolute survival probabilities in comparable future populations.</p>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 </section>
 </section>
@@ -1382,12 +1409,18 @@ Figure&nbsp;7: K-M Plot by Predicted Risk
 </figcaption>
 </figure>
 </div>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 </section>
 <section id="conclusions" class="level1" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> Conclusions</h1>
 <p>Overall, the baseline Cox proportional hazards model already demonstrated strong predictive performance, indicating that much of the outcome risk was captured by established clinical and demographic predictors. Penalized Cox regression provided limited additional improvement, suggesting that regularization helped stabilize estimation but did not substantially change predictive performance. Random survival forest performed comparably but did not clearly outperform the Cox-based approaches and was computationally intensive. In contrast, the final XGBoost Cox model achieved the strongest overall discrimination, with excellent concordance after model fitting and good time-dependent risk separation across clinically relevant follow-up times. Because the XGBoost Cox objective estimates relative rather than absolute risk, Cox recalibration was performed to derive time-specific survival probabilities. After recalibration, predicted event risks showed good agreement with Kaplan–Meier observed risks across risk groups at 90, 180, 365, and 730 days, although finer risk stratification suggested some overestimation in the extreme high-risk tail. These findings support the final calibrated XGBoost Cox model as the best-performing model for both risk stratification and estimation of time-specific absolute risk in comparable future populations.</p>
 <p>We interpreted the baseline Cox proportional hazards model and SHAP analysis from the final XGBoost Cox model as complementary analyses. The Cox model was used to estimate adjusted associations between baseline predictors and 2-year all-cause mortality, whereas SHAP values were used to explain the contribution of individual predictors to XGBoost-based risk prediction. Several predictors with strong associations in the Cox model, including older age, malignant cancer, heart failure, chronic lung disease, kidney disease, liver disease, and neurologic impairment, were also among the most influential predictors in the SHAP analysis. This agreement suggests that the final XGBoost Cox model captured clinically plausible risk patterns while providing improved predictive flexibility.</p>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
 </section>
 <section id="supplemental-data" class="level1" data-number="12">
 <h1 data-number="12"><span class="header-section-number">12</span> Supplemental data</h1>
@@ -1489,6 +1522,10 @@ Figure&nbsp;8: XGBoost calibration plot before recalibration
 </figcaption>
 </figure>
 </div>
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
+✦ ✦ ✦
+</div>
+<p><a href="https://forms.gle/ZqsvhNpAvZHgNRwS6" class="big-link">Leave anonymous feedback</a></p>
 </section>
 </section>
 
