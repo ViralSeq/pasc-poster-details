@@ -250,13 +250,15 @@ All final model comparisons were based on the held-out testing set to avoid opti
 
 # Results 
 
-## Data lock out date
+## Data lockout date
 
 May 2026
 
 ## Baseline Date
 Range: Jan 2020 to March 2026
+
 Median: 2022-08-16
+
 IQR: 2022-02-14 to 2023-05-19
 
 
