@@ -577,5 +577,12 @@ grid <- expand_grid(
 
 <div style="text-align: center; font-size: 1.5em; margin: 1em 0;">✦ ✦ ✦</div>
 
+
+# Acknowledgements
+
+The research reported in this poster was supported by the AIM-AHEAD Coordinating Center at the University of North Texas Health Science Center at Fort Worth. This research was, in part, funded by the National Institutes of Health (NIH) Agreement No. 1OT2OD032581. The views and conclusions contained in this document are those of the authors and should not be interpreted as representing the official policies, either expressed or implied, of the NIH. The analyses described in this poster were conducted with data or tools accessed through the NCATS N3C Data Enclave https://n3c.ncats.nih.gov/clinical-cohort and N3C Attribution & Publication Policy v 1.2-2020-08-25b supported by NCATS Contract No. 75N95023D00001. This research was possible because of the patients whose information is included within the data and the organizations (https://ncats.nih.gov/n3c/resources/data-contribution/data-transfer-agreement-signatories) and scientists who have contributed to the ongoing development of this community resource https://doi.org/10.1093/jamia/ocaa196.
+
+<div style="text-align: center; font-size: 1.5em; margin: 1em 0;">✦ ✦ ✦</div>
+
 [Leave anonymous feedback](https://forms.gle/ZqsvhNpAvZHgNRwS6){.big-link}
 
