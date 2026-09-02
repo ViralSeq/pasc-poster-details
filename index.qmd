@@ -8,7 +8,7 @@ format:
     number-sections: true  # optional, for numbered headings
     code-block-bg: false
     code-block-border-left: false
-    theme: Materia           # Superhero for dark theme. Materia or Cerualean for bright theme.
+    theme: Superhero           # Superhero for dark theme. Materia or Cerualean for bright theme.
     smooth-scroll: true
     self-contained: false
     embed-resources: false
@@ -466,6 +466,33 @@ SHAP-based interpretation of the final XGBoost model showed that age at baseline
 ![K-M Plot by Predicted Risk](images/KM.png){#fig-id fig-alt="alt"}
 
 <div style="text-align: center; font-size: 1.5em; margin: 1em 0;">✦ ✦ ✦</div>
+
+# Age-Stratified SHAP Analysis - Key findings
+
+## Age-specific contribution to mortality prediction
+
+- The SHAP contribution of age showed a clear **nonlinear pattern across adulthood**.
+- At younger ages (approximately 18–44 years), age SHAP values were consistently negative and changed relatively little, indicating that younger age strongly shifted predictions toward lower mortality risk but contributed relatively little to **risk differentiation within this younger range**.
+- Beginning around **45 years**, the contribution of age increased progressively with advancing age.
+- Age SHAP values approached zero around the early 60s and became increasingly positive thereafter, indicating a progressively stronger contribution of older age toward predicted 2-year mortality.
+- This pattern supported using approximately **45 years as a data-informed cutoff** for exploratory age-stratified interpretation.
+
+## Figure 8. Contribution of Age to Predicted 2-Year Mortality
+
+![Contribution of Age](images/age_contribution.png){#fig-id fig-alt="alt"}
+
+
+## Comparison of non-age predictor importance (<45 vs. ≥45 years)
+
+- The **six most important non-age predictors were highly consistent across age groups**: malignant cancer, chronic lung disease, heart failure, male sex, kidney disease, and other immunocompromised conditions.
+- Malignant cancer had nearly identical importance in the two age groups.
+- Chronic lung disease, heart failure, male sex, and kidney disease showed somewhat greater mean absolute SHAP contributions among adults ≥45 years.
+- Differences were more apparent among lower-ranked predictors. Hypertension and mild liver disease contributed more strongly among adults <45 years, whereas some predictors, including congestive heart failure, had greater contributions among older adults.
+- Overall, the results suggest that **the major clinical predictors of mortality are largely preserved across age groups, although their relative contributions vary with age.**
+
+## Figure 9. Age-Stratified Predictor Importance
+
+![Age-Stratified Predictor Importance](images/age_stratified_import.png){#fig-id fig-alt="alt"}
 
 
 # Conclusions

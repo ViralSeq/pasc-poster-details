@@ -33,10 +33,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-fea5752325448ae408a85285cb1099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-47fe82796011a028439432d8bef8782a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -133,19 +133,26 @@ window.Quarto = {
   <li><a href="#summary-of-model-interpretation" id="toc-summary-of-model-interpretation" class="nav-link" data-scroll-target="#summary-of-model-interpretation"><span class="header-section-number">10.6</span> Summary of model interpretation</a></li>
   <li><a href="#figure-7.-observed-2-year-survival-by-xgboost-predicted-risk-group-using-kaplanmeier-approach" id="toc-figure-7.-observed-2-year-survival-by-xgboost-predicted-risk-group-using-kaplanmeier-approach" class="nav-link" data-scroll-target="#figure-7.-observed-2-year-survival-by-xgboost-predicted-risk-group-using-kaplanmeier-approach"><span class="header-section-number">10.7</span> Figure 7. Observed 2-Year Survival by XGBoost-Predicted Risk Group Using Kaplan–Meier Approach</a></li>
   </ul></li>
-  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">11</span> Conclusions</a></li>
-  <li><a href="#supplemental-data" id="toc-supplemental-data" class="nav-link" data-scroll-target="#supplemental-data"><span class="header-section-number">12</span> Supplemental data</a>
+  <li><a href="#age-stratified-shap-analysis---key-findings" id="toc-age-stratified-shap-analysis---key-findings" class="nav-link" data-scroll-target="#age-stratified-shap-analysis---key-findings"><span class="header-section-number">11</span> Age-Stratified SHAP Analysis - Key findings</a>
   <ul class="collapse">
-  <li><a href="#xgboost-hyperparameter-tuning-strategy" id="toc-xgboost-hyperparameter-tuning-strategy" class="nav-link" data-scroll-target="#xgboost-hyperparameter-tuning-strategy"><span class="header-section-number">12.1</span> XGBoost hyperparameter tuning strategy</a>
+  <li><a href="#age-specific-contribution-to-mortality-prediction" id="toc-age-specific-contribution-to-mortality-prediction" class="nav-link" data-scroll-target="#age-specific-contribution-to-mortality-prediction"><span class="header-section-number">11.1</span> Age-specific contribution to mortality prediction</a></li>
+  <li><a href="#figure-8.-contribution-of-age-to-predicted-2-year-mortality" id="toc-figure-8.-contribution-of-age-to-predicted-2-year-mortality" class="nav-link" data-scroll-target="#figure-8.-contribution-of-age-to-predicted-2-year-mortality"><span class="header-section-number">11.2</span> Figure 8. Contribution of Age to Predicted 2-Year Mortality</a></li>
+  <li><a href="#comparison-of-non-age-predictor-importance-45-vs.-45-years" id="toc-comparison-of-non-age-predictor-importance-45-vs.-45-years" class="nav-link" data-scroll-target="#comparison-of-non-age-predictor-importance-45-vs.-45-years"><span class="header-section-number">11.3</span> Comparison of non-age predictor importance (&lt;45 vs.&nbsp;≥45 years)</a></li>
+  <li><a href="#figure-9.-age-stratified-predictor-importance" id="toc-figure-9.-age-stratified-predictor-importance" class="nav-link" data-scroll-target="#figure-9.-age-stratified-predictor-importance"><span class="header-section-number">11.4</span> Figure 9. Age-Stratified Predictor Importance</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><span class="header-section-number">12</span> Conclusions</a></li>
+  <li><a href="#supplemental-data" id="toc-supplemental-data" class="nav-link" data-scroll-target="#supplemental-data"><span class="header-section-number">13</span> Supplemental data</a>
   <ul class="collapse">
-  <li><a href="#rationale" id="toc-rationale" class="nav-link" data-scroll-target="#rationale"><span class="header-section-number">12.1.1</span> Rationale</a></li>
-  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy"><span class="header-section-number">12.1.2</span> Strategy</a></li>
+  <li><a href="#xgboost-hyperparameter-tuning-strategy" id="toc-xgboost-hyperparameter-tuning-strategy" class="nav-link" data-scroll-target="#xgboost-hyperparameter-tuning-strategy"><span class="header-section-number">13.1</span> XGBoost hyperparameter tuning strategy</a>
+  <ul class="collapse">
+  <li><a href="#rationale" id="toc-rationale" class="nav-link" data-scroll-target="#rationale"><span class="header-section-number">13.1.1</span> Rationale</a></li>
+  <li><a href="#strategy" id="toc-strategy" class="nav-link" data-scroll-target="#strategy"><span class="header-section-number">13.1.2</span> Strategy</a></li>
   </ul></li>
-  <li><a href="#penalized-coxph-model-tuning" id="toc-penalized-coxph-model-tuning" class="nav-link" data-scroll-target="#penalized-coxph-model-tuning"><span class="header-section-number">12.2</span> Penalized CoxPH model tuning</a></li>
-  <li><a href="#rsf-tuning-strategy" id="toc-rsf-tuning-strategy" class="nav-link" data-scroll-target="#rsf-tuning-strategy"><span class="header-section-number">12.3</span> RSF tuning strategy</a></li>
-  <li><a href="#xgboost-calibration-plot-before-recalibration" id="toc-xgboost-calibration-plot-before-recalibration" class="nav-link" data-scroll-target="#xgboost-calibration-plot-before-recalibration"><span class="header-section-number">12.4</span> XGBoost calibration plot before recalibration</a></li>
+  <li><a href="#penalized-coxph-model-tuning" id="toc-penalized-coxph-model-tuning" class="nav-link" data-scroll-target="#penalized-coxph-model-tuning"><span class="header-section-number">13.2</span> Penalized CoxPH model tuning</a></li>
+  <li><a href="#rsf-tuning-strategy" id="toc-rsf-tuning-strategy" class="nav-link" data-scroll-target="#rsf-tuning-strategy"><span class="header-section-number">13.3</span> RSF tuning strategy</a></li>
+  <li><a href="#xgboost-calibration-plot-before-recalibration" id="toc-xgboost-calibration-plot-before-recalibration" class="nav-link" data-scroll-target="#xgboost-calibration-plot-before-recalibration"><span class="header-section-number">13.4</span> XGBoost calibration plot before recalibration</a></li>
   </ul></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements"><span class="header-section-number">13</span> Acknowledgements</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements"><span class="header-section-number">14</span> Acknowledgements</a></li>
   </ul>
 </nav>
 </div>
@@ -1417,24 +1424,73 @@ Figure&nbsp;7: K-M Plot by Predicted Risk
 </div>
 </section>
 </section>
-<section id="conclusions" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Conclusions</h1>
+<section id="age-stratified-shap-analysis---key-findings" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Age-Stratified SHAP Analysis - Key findings</h1>
+<section id="age-specific-contribution-to-mortality-prediction" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="age-specific-contribution-to-mortality-prediction"><span class="header-section-number">11.1</span> Age-specific contribution to mortality prediction</h2>
+<ul>
+<li>The SHAP contribution of age showed a clear <strong>nonlinear pattern across adulthood</strong>.</li>
+<li>At younger ages (approximately 18–44 years), age SHAP values were consistently negative and changed relatively little, indicating that younger age strongly shifted predictions toward lower mortality risk but contributed relatively little to <strong>risk differentiation within this younger range</strong>.</li>
+<li>Beginning around <strong>45 years</strong>, the contribution of age increased progressively with advancing age.</li>
+<li>Age SHAP values approached zero around the early 60s and became increasingly positive thereafter, indicating a progressively stronger contribution of older age toward predicted 2-year mortality.</li>
+<li>This pattern supported using approximately <strong>45 years as a data-informed cutoff</strong> for exploratory age-stratified interpretation.</li>
+</ul>
+</section>
+<section id="figure-8.-contribution-of-age-to-predicted-2-year-mortality" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="figure-8.-contribution-of-age-to-predicted-2-year-mortality"><span class="header-section-number">11.2</span> Figure 8. Contribution of Age to Predicted 2-Year Mortality</h2>
+<div id="fig-id" class="quarto-float quarto-figure quarto-figure-center anchored" alt="alt">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/age_contribution.png" class="img-fluid figure-img" alt="alt">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Contribution of Age
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="comparison-of-non-age-predictor-importance-45-vs.-45-years" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="comparison-of-non-age-predictor-importance-45-vs.-45-years"><span class="header-section-number">11.3</span> Comparison of non-age predictor importance (&lt;45 vs.&nbsp;≥45 years)</h2>
+<ul>
+<li>The <strong>six most important non-age predictors were highly consistent across age groups</strong>: malignant cancer, chronic lung disease, heart failure, male sex, kidney disease, and other immunocompromised conditions.</li>
+<li>Malignant cancer had nearly identical importance in the two age groups.</li>
+<li>Chronic lung disease, heart failure, male sex, and kidney disease showed somewhat greater mean absolute SHAP contributions among adults ≥45 years.</li>
+<li>Differences were more apparent among lower-ranked predictors. Hypertension and mild liver disease contributed more strongly among adults &lt;45 years, whereas some predictors, including congestive heart failure, had greater contributions among older adults.</li>
+<li>Overall, the results suggest that <strong>the major clinical predictors of mortality are largely preserved across age groups, although their relative contributions vary with age.</strong></li>
+</ul>
+</section>
+<section id="figure-9.-age-stratified-predictor-importance" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="figure-9.-age-stratified-predictor-importance"><span class="header-section-number">11.4</span> Figure 9. Age-Stratified Predictor Importance</h2>
+<div id="fig-id" class="quarto-float quarto-figure quarto-figure-center anchored" alt="alt">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/age_stratified_import.png" class="img-fluid figure-img" alt="alt">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Age-Stratified Predictor Importance
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="conclusions" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Conclusions</h1>
 <p>Overall, the baseline Cox proportional hazards model already demonstrated strong predictive performance, indicating that much of the outcome risk was captured by established clinical and demographic predictors. Penalized Cox regression provided limited additional improvement, suggesting that regularization helped stabilize estimation but did not substantially change predictive performance. Random survival forest performed comparably but did not clearly outperform the Cox-based approaches and was computationally intensive. In contrast, the final XGBoost Cox model achieved the strongest overall discrimination, with excellent concordance after model fitting and good time-dependent risk separation across clinically relevant follow-up times. Because the XGBoost Cox objective estimates relative rather than absolute risk, Cox recalibration was performed to derive time-specific survival probabilities. After recalibration, predicted event risks showed good agreement with Kaplan–Meier observed risks across risk groups at 90, 180, 365, and 730 days, although finer risk stratification suggested some overestimation in the extreme high-risk tail. These findings support the final calibrated XGBoost Cox model as the best-performing model for both risk stratification and estimation of time-specific absolute risk in comparable future populations.</p>
 <p>We interpreted the baseline Cox proportional hazards model and SHAP analysis from the final XGBoost Cox model as complementary analyses. The Cox model was used to estimate adjusted associations between baseline predictors and 2-year all-cause mortality, whereas SHAP values were used to explain the contribution of individual predictors to XGBoost-based risk prediction. Several predictors with strong associations in the Cox model, including older age, malignant cancer, heart failure, chronic lung disease, kidney disease, liver disease, and neurologic impairment, were also among the most influential predictors in the SHAP analysis. This agreement suggests that the final XGBoost Cox model captured clinically plausible risk patterns while providing improved predictive flexibility.</p>
 <div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
 ✦ ✦ ✦
 </div>
 </section>
-<section id="supplemental-data" class="level1" data-number="12">
-<h1 data-number="12"><span class="header-section-number">12</span> Supplemental data</h1>
-<section id="xgboost-hyperparameter-tuning-strategy" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="xgboost-hyperparameter-tuning-strategy"><span class="header-section-number">12.1</span> XGBoost hyperparameter tuning strategy</h2>
-<section id="rationale" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="rationale"><span class="header-section-number">12.1.1</span> Rationale</h3>
+<section id="supplemental-data" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Supplemental data</h1>
+<section id="xgboost-hyperparameter-tuning-strategy" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="xgboost-hyperparameter-tuning-strategy"><span class="header-section-number">13.1</span> XGBoost hyperparameter tuning strategy</h2>
+<section id="rationale" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="rationale"><span class="header-section-number">13.1.1</span> Rationale</h3>
 <p>To efficiently tune XGBoost with limited tuning time and computer resources (no GPU). XGBoost survival hyperparameters were tuned using native 5-fold cross-validation via <code>xgb.cv()</code>, minimizing the Cox partial negative log-likelihood (<code>cox-nloglik</code>) within the training set. Early stopping is used to save training time (<code>nrounds</code> max 5000)</p>
 </section>
-<section id="strategy" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="strategy"><span class="header-section-number">12.1.2</span> Strategy</h3>
+<section id="strategy" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="strategy"><span class="header-section-number">13.1.2</span> Strategy</h3>
 <p><strong>Stage 1</strong>: Tune a broader combination of eta, min_child_weight, and max_depth, with fixed subsample and colsample_bytree.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1464,8 +1520,8 @@ Figure&nbsp;7: K-M Plot by Predicted Risk
 nrounds = 909</code></pre>
 </section>
 </section>
-<section id="penalized-coxph-model-tuning" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="penalized-coxph-model-tuning"><span class="header-section-number">12.2</span> Penalized CoxPH model tuning</h2>
+<section id="penalized-coxph-model-tuning" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="penalized-coxph-model-tuning"><span class="header-section-number">13.2</span> Penalized CoxPH model tuning</h2>
 <p><strong>Stage 1</strong>:</p>
 <ul>
 <li>metric = brier_survival</li>
@@ -1494,8 +1550,8 @@ nrounds = 909</code></pre>
 </ul>
 <p>Fit the final model based on the best parameters.</p>
 </section>
-<section id="rsf-tuning-strategy" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="rsf-tuning-strategy"><span class="header-section-number">12.3</span> RSF tuning strategy</h2>
+<section id="rsf-tuning-strategy" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="rsf-tuning-strategy"><span class="header-section-number">13.3</span> RSF tuning strategy</h2>
 <ul>
 <li>Full-set tuning</li>
 <li>Use mean_IBS as the main metrics for model selection</li>
@@ -1513,15 +1569,15 @@ nrounds = 909</code></pre>
 <li>nsplit = 10</li>
 </ul>
 </section>
-<section id="xgboost-calibration-plot-before-recalibration" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="xgboost-calibration-plot-before-recalibration"><span class="header-section-number">12.4</span> XGBoost calibration plot before recalibration</h2>
+<section id="xgboost-calibration-plot-before-recalibration" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="xgboost-calibration-plot-before-recalibration"><span class="header-section-number">13.4</span> XGBoost calibration plot before recalibration</h2>
 <div id="fig-id" class="quarto-float quarto-figure quarto-figure-center anchored" alt="alt">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/xgb_cal_before.png" class="img-fluid figure-img" alt="alt">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: XGBoost calibration plot before recalibration
+Figure&nbsp;10: XGBoost calibration plot before recalibration
 </figcaption>
 </figure>
 </div>
@@ -1530,8 +1586,8 @@ Figure&nbsp;8: XGBoost calibration plot before recalibration
 </div>
 </section>
 </section>
-<section id="acknowledgements" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Acknowledgements</h1>
+<section id="acknowledgements" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Acknowledgements</h1>
 <p>The research reported in this poster was supported by the AIM-AHEAD Coordinating Center at the University of North Texas Health Science Center at Fort Worth. This research was, in part, funded by the National Institutes of Health (NIH) Agreement No.&nbsp;1OT2OD032581. The views and conclusions contained in this document are those of the authors and should not be interpreted as representing the official policies, either expressed or implied, of the NIH. The analyses described in this poster were conducted with data or tools accessed through the NCATS N3C Data Enclave https://n3c.ncats.nih.gov/clinical-cohort and N3C Attribution &amp; Publication Policy v 1.2-2020-08-25b supported by NCATS Contract No.&nbsp;75N95023D00001. This research was possible because of the patients whose information is included within the data and the organizations (https://ncats.nih.gov/n3c/resources/data-contribution/data-transfer-agreement-signatories) and scientists who have contributed to the ongoing development of this community resource https://doi.org/10.1093/jamia/ocaa196.</p>
 <div style="text-align: center; font-size: 1.5em; margin: 1em 0;">
 ✦ ✦ ✦
